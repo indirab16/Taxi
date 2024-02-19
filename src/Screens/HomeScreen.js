@@ -201,9 +201,10 @@ export default class HomeScreen extends Component {
                   });
                   if(sessionStorage.getItem("marketId") !== "GLACIER"){
                   list.push({ id: "Static Image Configuration", key: StatusImages });
+                  }
                   obj.List = list;
                   subMenulist.push(obj);
-                  }
+                  
                 }
                 if (item["@label"] == "manage_cabs_menu") {
                   var mainmenu = "Manage Cabs";
