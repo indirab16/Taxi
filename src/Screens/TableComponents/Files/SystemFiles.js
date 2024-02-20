@@ -3919,6 +3919,7 @@ export default class SystemFiles extends Component {
     fileName,
     visibleCol,
     isConversion,
+    phasName,
     callback,
     expButton
   ) {
@@ -4008,7 +4009,7 @@ export default class SystemFiles extends Component {
     const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
     const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
     const data = new Blob([excelBuffer], { type: fileType });
-    FileSaver.saveAs(data, fileName + fileExtension);
+    FileSaver.saveAs(data, `${phasName}_${fileName}${fileExtension}`);
   }
 
   getDataforExport(newFilter) {
@@ -4023,7 +4024,8 @@ export default class SystemFiles extends Component {
             res.data.ResponseCollection,
             this.state.exportFileName,
             this.state.columns,
-            true
+            true,
+            this.state.selectedPhaseData.Name
           );
         }
       });
@@ -4039,7 +4041,8 @@ export default class SystemFiles extends Component {
             res.data.ResponseCollection,
             this.state.exportFileName,
             this.state.columns,
-            true
+            true,
+            this.state.selectedPhaseData.Name
           );
         }
       });
@@ -4152,7 +4155,8 @@ export default class SystemFiles extends Component {
       myData,
       this.state.exportFileName,
       this.state.columns,
-      true
+      true,
+      this.state.selectedPhaseData.Name
     );
   }
 
